@@ -1,6 +1,11 @@
-public class SuperArray{
+import java.util.*;
+public class SuperArray implements Iterable<String>{
   private String[] data;
   private int size;
+
+  public Iterator<String> iterator(){
+    return new SuperArrayIterator(data,size);
+  }
   public SuperArray(){
     data = new String[10];
     size = 0;
@@ -14,14 +19,21 @@ public class SuperArray{
     return size;
   }
 
-  public boolean add(String a){
-    if(size == data.length){
-      this.resize();
+  public boolean add(String element){
+    if (size == data.length){
+      String[] newray = new String[size+1];
+      for (int i = 0; i < size; i++){
+        newray[i] = data[i];
+      }
+      newray[size] = element;
+      size++;
+      data = newray;
+      return true;
     }
-    data[size] = a;
-    size ++;
+    data[size] = element;
+    size++;
     return true;
-  }
+}
 
   public String toString(){
     String a = "";
