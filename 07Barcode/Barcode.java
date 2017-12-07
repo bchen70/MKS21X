@@ -1,7 +1,15 @@
 public class Barcode{
   private String zip;
 
-  public Bardcode(String zip){
+  public Barcode(String zip){
+    if (zip.length() != 5){
+      throw new IllegalArgumentException();
+    }
+    for (int x = 0; x < zip.length(); x++) {
+      if((int)zip.charAt(x) - '0' > 0 || (int)zip.charAt(x) - '0' > 9) {
+        throw new IllegalArgumentException();
+      }
+    }
     this.zip = zip;
   }
 
@@ -21,7 +29,7 @@ public class Barcode{
     }
 
     public String toString() {
-      return getCode() + "     (" + zip + ")";
+      return getCode() + "(" + zip + ")";
     }
 
   public int compareTo(Barcode b) {
