@@ -20,7 +20,7 @@ public class Sorts{
         return false;
       }
     }
-    return eturn true;
+    return true;
   }
 
   public static void bogoSort(int[]ary){
@@ -36,18 +36,16 @@ public class Sorts{
 
   public static void selectionSort(int[] data){
     for (int i = 0; i < data.length; i++){
-      int minIndex = i;
-      for (int j = i+1; j < data.length;j++){
-        if (data[j] < data[minIndex]){
-          minIndex = j;
+      int next = data[i];
+      int index = i;
+      for (int j = i; j < data.length; j++){
+        if (data[j] < next){
+          next = data[j];
+          index = j;
         }
       }
-      if (minIndex!=i){
-        int hol = data[i];
-        data[i] = data[minIndex];
-        data[minIndex] = hol;
-      }
+      data[index] = data[i];
+      data[i] = next;
     }
   }
-
 }
