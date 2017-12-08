@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Arrays;
 public class Sorts{
   public static String d(int[] s){
     String str = "[";
@@ -13,6 +13,25 @@ public class Sorts{
 
   public static String name(){
     return "10.Chen.Benny";
+  }
+  public static boolean isSorted(int[]ary){
+    for(int i = 0; i < ary.length-1; i++){
+      if (ary[i] > ary[i+1]){
+        return false;
+      }
+    }
+    return eturn true;
+  }
+
+  public static void bogoSort(int[]ary){
+    while(!isSorted(ary)){
+      for (int i = 0; i < ary.length; i++){
+        int temp = ary[i];
+        int newSpot = (int)(Math.random()*ary.length);
+        ary[i] = ary[newSpot];
+        ary[newSpot] = temp;
+      }
+    }
   }
 
   public static void selectionSort(int[] data){
