@@ -60,14 +60,15 @@ public class Sorts{
     }
   }
   public static void bubbleSort(int[] data){
-    for (int i = 0; i < data.length; i++){
-      int max;
-      for (int x = 1; j < data.length - x; x++){
-        if ( data[x-1] > data[x]){
-          max = data[x-1];
-          data[x-1] = data[x];
-          data[x] = max;
+    for (int i = 0; i < data.length-1; i++){
+	for (int x = 0; x < data.length-1-i; x++){
+	    if ( data[x+1] < data[x]){
+		int max = data[x+1];
+		data[x+1] = data[x];
+		data[x] = max;
         }
       }
     }
+  }
 }
+
