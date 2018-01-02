@@ -35,5 +35,6 @@ public class ReversedCharSequence implements CharSequence {
     public String toString () {
 	return newseq;
     }
+}
 	
     
