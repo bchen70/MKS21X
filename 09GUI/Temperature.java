@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-public class Temperature extends JFrame{
+import java.awt.event.*;
+public class Temperature extends JFrame implements ActionListener{
     private Container pane;
-    private JButton b;
-    private JButton c;
+    private JButton ftoc;
+    private JButton ctof;
     private JLabel l;
     private JTextField t;
 
@@ -15,16 +16,32 @@ public class Temperature extends JFrame{
       pane=this.getContentPane();
       pane.setLayout(new FlowLayout());
 
-      b = new JButton("Convert Fahrenheit to Celsius");
       l = new JLabel("Enter values to convert");
-      c = new JButton("Convert Celsius to Fahrenheit");
-      t = new JTextField(10);
       pane.add(l);
+
+      t = new JTextField(5);
       pane.add(t);
-      pane.add(b);
-      pane.add(c);
+
+      ftoc = new JButton("Convert Fahrenheit to Celsius");
+      ftoc.addActionListener(this);
+      pane.add(ftoc);
+      
+      ctof = new JButton("Convert Celsius to Fahrenheit");
+      ctof.addActionListener(this);
+      pane.add(ctof);
     }
-  
+
+  public void actionPerformed(ActionEvent e){
+    String str = e.getActionCommand();
+    if (str.equals("Convert Celsius to Fahrenheit")){
+	    double result = celsiusToFahrenheit(Double.parseDouble(t.getText()));
+	    t.setText(result + "");
+    }
+    else {
+	    double result = fahrenheitToCelsius(Double.parseDouble(t.getText()));
+	    t.setText(result + "");
+    }  	 
+  }
     public static double celsiusToFahrenheit(double t) {
       return 9 * t / 5 + 32;
     }
